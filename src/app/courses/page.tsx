@@ -1,35 +1,15 @@
 import Link from 'next/link';
-import { PlayCircle, Clock, BookOpen, Code } from 'lucide-react';
+import { PlayCircle, Clock, BookOpen, Code, Database } from 'lucide-react';
+import { coursesData } from '@/lib/coursesData';
 
-const courses = [
-  {
-    id: 1,
-    title: "Fullstack Web Development in Telugu",
-    description: "Learn modern web development from scratch using React, Next.js, and Node.js. Taught entirely in Telugu for easy understanding.",
-    duration: "40 hours",
-    level: "Beginner",
-    modules: 12,
-    icon: <Code className="w-6 h-6 text-primary" />
-  },
-  {
-    id: 2,
-    title: "Mastering Open Source Contributions",
-    description: "A complete guide on how to find, evaluate, and contribute to open source projects on GitHub.",
-    duration: "10 hours",
-    level: "Intermediate",
-    modules: 4,
-    icon: <BookOpen className="w-6 h-6 text-primary" />
-  },
-  {
-    id: 3,
-    title: "Data Structures & Algorithms",
-    description: "Build a strong foundation in problem-solving and algorithmic thinking. Essential for cracking top tech interviews.",
-    duration: "60 hours",
-    level: "All Levels",
-    modules: 15,
-    icon: <PlayCircle className="w-6 h-6 text-primary" />
+function getCourseIcon(id: number) {
+  switch (id) {
+    case 1: return <Code className="w-6 h-6 text-foreground" />;
+    case 2: return <BookOpen className="w-6 h-6 text-foreground" />;
+    case 3: return <PlayCircle className="w-6 h-6 text-foreground" />;
+    default: return <Database className="w-6 h-6 text-foreground" />;
   }
-];
+}
 
 export default function CoursesPage() {
   return (
@@ -47,10 +27,10 @@ export default function CoursesPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full animate-fade-rise-delay">
-        {courses.map((course) => (
+        {coursesData.map((course) => (
           <div key={course.id} className="liquid-glass rounded-3xl p-8 flex flex-col hover:bg-white/[0.03] transition-all hover:-translate-y-1">
             <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
-              {course.icon}
+              {getCourseIcon(course.id)}
             </div>
             
             <h3 className="text-xl font-medium mb-3 text-foreground">{course.title}</h3>
@@ -67,13 +47,16 @@ export default function CoursesPage() {
                 {course.level}
               </span>
               <span className="px-2 py-1 rounded-full bg-white/5 border border-white/10">
-                {course.modules} Modules
+                {course.modules.length} Modules
               </span>
             </div>
             
-            <button className="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 text-foreground text-sm font-medium transition-colors">
+            <Link 
+              href={`/courses/${course.id}`}
+              className="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 text-foreground text-sm font-medium transition-colors text-center block"
+            >
               Start Learning
-            </button>
+            </Link>
           </div>
         ))}
       </div>

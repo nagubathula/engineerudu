@@ -31,6 +31,37 @@ export default function RootLayout({
       className={`dark ${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col relative bg-background overflow-x-hidden">
+        {/* Prevent hydration mismatches caused by browser extensions (like Bitdefender/Buster) injecting bis_skin_checked */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const remove = (el) => el.removeAttribute && el.removeAttribute('bis_skin_checked');
+                const observer = new MutationObserver((mutations) => {
+                  for (const m of mutations) {
+                    if (m.type === 'attributes') {
+                      remove(m.target);
+                    } else if (m.type === 'childList') {
+                      m.addedNodes.forEach(node => {
+                        if (node.nodeType === 1) {
+                          remove(node);
+                          node.querySelectorAll('[bis_skin_checked]').forEach(remove);
+                        }
+                      });
+                    }
+                  }
+                });
+                observer.observe(document.documentElement, {
+                  attributes: true,
+                  childList: true,
+                  subtree: true,
+                  attributeFilter: ['bis_skin_checked']
+                });
+              })();
+            `,
+          }}
+        />
+
         {/* Global Video Background */}
         <video
           autoPlay
