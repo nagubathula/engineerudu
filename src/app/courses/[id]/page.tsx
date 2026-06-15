@@ -255,7 +255,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
         <div className="flex items-center gap-4">
           <Link 
             href="/courses" 
-            className="w-10 h-10 rounded-full border border-white/10 hover:bg-white/5 flex items-center justify-center transition-colors text-muted-foreground hover:text-foreground"
+            className="w-10 h-10 rounded-full border border-white/10 hover:border-brand-light/30 hover:text-brand-light flex items-center justify-center transition-colors text-muted-foreground"
           >
             <ArrowLeft className="w-4 h-4" />
           </Link>
@@ -270,14 +270,14 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
           <button
             onClick={() => navigateLesson("prev")}
             disabled={isFirstLesson}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium hover:bg-white/10 text-foreground disabled:opacity-40 disabled:hover:bg-white/5 disabled:cursor-not-allowed transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium hover:border-brand-light/30 hover:text-brand-light hover:bg-brand/5 text-foreground disabled:opacity-40 disabled:hover:bg-white/5 disabled:hover:border-white/10 disabled:hover:text-muted-foreground disabled:cursor-not-allowed transition-all"
           >
             <ChevronLeft className="w-4 h-4" /> Previous
           </button>
           <button
             onClick={() => navigateLesson("next")}
             disabled={isLastLesson}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium hover:bg-white/10 text-foreground disabled:opacity-40 disabled:hover:bg-white/5 disabled:cursor-not-allowed transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium hover:border-brand-light/30 hover:text-brand-light hover:bg-brand/5 text-foreground disabled:opacity-40 disabled:hover:bg-white/5 disabled:hover:border-white/10 disabled:hover:text-muted-foreground disabled:cursor-not-allowed transition-all"
           >
             Next <ChevronRight className="w-4 h-4" />
           </button>
@@ -299,7 +299,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
             
             <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden relative">
               <div 
-                className="h-full bg-white rounded-full transition-all duration-500 ease-out"
+                className="h-full bg-brand-gradient rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -328,7 +328,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                         key={lesson.id}
                         className={`flex items-center justify-between px-3 py-2 rounded-xl transition-all duration-200 ${
                           isActive 
-                            ? "bg-white/15 border border-white/10 shadow-sm" 
+                            ? "bg-brand/10 border border-brand/20 shadow-sm" 
                             : "hover:bg-white/[0.03] border border-transparent"
                         }`}
                       >
@@ -337,7 +337,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                           className="flex items-start gap-2 text-left flex-grow mr-2"
                         >
                           <div className="flex flex-col">
-                            <span className={`text-sm leading-tight transition-colors ${isActive ? "text-white font-medium" : "text-muted-foreground hover:text-foreground"}`}>
+                            <span className={`text-sm leading-tight transition-colors ${isActive ? "text-brand-light font-medium" : "text-muted-foreground hover:text-foreground"}`}>
                               {lesson.title.replace(/^\d+\.\d+\s+/, "")}
                             </span>
                             <span className="text-[10px] text-muted-foreground mt-1 font-mono">{lesson.duration}</span>
@@ -349,8 +349,8 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                           onClick={() => toggleLessonCompleted(lesson.id)}
                           className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
                             isCompleted
-                              ? "bg-white border-white text-background"
-                              : "border-white/20 hover:border-white/40 text-transparent"
+                              ? "bg-brand border-brand text-black"
+                              : "border-white/20 hover:border-brand-light/40 text-transparent"
                           }`}
                         >
                           <Check className="w-3.5 h-3.5 stroke-[3px]" />
@@ -371,7 +371,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
           <details className="group rounded-2xl border border-white/10 bg-white/5 overflow-hidden transition-all duration-300 no-print">
             <summary className="flex items-center justify-between p-4 cursor-pointer select-none text-sm font-semibold text-white/90 hover:bg-white/5">
               <span className="flex items-center gap-2">
-                <PlayCircle className="w-4 h-4 text-brand-400" /> Watch Video Lecture
+                <PlayCircle className="w-4 h-4 text-brand-light" /> Watch Video Lecture
               </span>
               <span className="text-xs text-muted-foreground font-mono group-open:hidden">Expand Video ▾</span>
               <span className="text-xs text-muted-foreground font-mono hidden group-open:inline">Collapse Video ▴</span>
@@ -428,8 +428,8 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
               <div className="flex items-center gap-1 bg-black/20 p-1 rounded-lg border border-white/5">
                 <button
                   onClick={() => setTextSize("sm")}
-                  className={`w-7 h-7 flex items-center justify-center rounded text-xs font-bold ${
-                    textSize === "sm" ? "bg-zinc-800 text-white" : "text-muted-foreground hover:text-foreground"
+                  className={`w-7 h-7 flex items-center justify-center rounded text-xs font-bold transition-all ${
+                    textSize === "sm" ? "bg-brand text-black shadow-sm" : "text-muted-foreground hover:text-foreground"
                   }`}
                   title="Smaller Text"
                 >
@@ -437,8 +437,8 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                 </button>
                 <button
                   onClick={() => setTextSize("base")}
-                  className={`w-7 h-7 flex items-center justify-center rounded text-xs font-bold ${
-                    textSize === "base" ? "bg-zinc-800 text-white" : "text-muted-foreground hover:text-foreground"
+                  className={`w-7 h-7 flex items-center justify-center rounded text-xs font-bold transition-all ${
+                    textSize === "base" ? "bg-brand text-black shadow-sm" : "text-muted-foreground hover:text-foreground"
                   }`}
                   title="Default Text"
                 >
@@ -446,8 +446,8 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                 </button>
                 <button
                   onClick={() => setTextSize("lg")}
-                  className={`w-7 h-7 flex items-center justify-center rounded text-xs font-bold ${
-                    textSize === "lg" ? "bg-zinc-800 text-white" : "text-muted-foreground hover:text-foreground"
+                  className={`w-7 h-7 flex items-center justify-center rounded text-xs font-bold transition-all ${
+                    textSize === "lg" ? "bg-brand text-black shadow-sm" : "text-muted-foreground hover:text-foreground"
                   }`}
                   title="Larger Text"
                 >
@@ -459,7 +459,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
             {/* Print action button */}
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-white/10 bg-white/5 text-xs font-semibold hover:bg-white/10 text-foreground transition-all"
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-white/10 bg-white/5 text-xs font-semibold hover:border-brand-light/30 hover:text-brand-light text-foreground transition-all"
             >
               <Printer className="w-3.5 h-3.5" /> Save PDF / Print
             </button>
@@ -609,8 +609,8 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                 onClick={() => toggleLessonCompleted(activeLesson.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full border text-sm font-semibold transition-all active:scale-[0.98] ${
                   completedLessons[activeLesson.id]
-                    ? "bg-emerald-600 border-emerald-500 text-white"
-                    : "border-current/20 hover:border-current/40 hover:bg-current/[0.03] text-current/80"
+                    ? "bg-brand border-brand text-black font-semibold hover:bg-brand-light hover:border-brand-light"
+                    : "border-current/20 hover:border-brand hover:text-brand hover:bg-brand/5 text-current/80"
                 }`}
               >
                 {completedLessons[activeLesson.id] ? (
@@ -630,20 +630,20 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
             {currentIdx > 0 ? (
               <button
                 onClick={() => navigateLesson("prev")}
-                className="flex flex-col items-start gap-1 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all text-left max-w-[45%]"
+                className="flex flex-col items-start gap-1 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-brand-light/20 hover:bg-brand/5 transition-all text-left max-w-[45%] group"
               >
                 <span className="text-[10px] uppercase font-bold text-muted-foreground">Previous Lesson</span>
-                <span className="text-sm font-semibold text-white truncate max-w-[200px]">{flatLessonsListForNav[currentIdx - 1].title.replace(/^\d+\.\d+\s+/, "")}</span>
+                <span className="text-sm font-semibold text-white group-hover:text-brand-light transition-colors truncate max-w-[200px]">{flatLessonsListForNav[currentIdx - 1].title.replace(/^\d+\.\d+\s+/, "")}</span>
               </button>
             ) : <div />}
 
             {currentIdx < flatLessonsListForNav.length - 1 ? (
               <button
                 onClick={() => navigateLesson("next")}
-                className="flex flex-col items-end gap-1 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all text-right max-w-[45%]"
+                className="flex flex-col items-end gap-1 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-brand-light/20 hover:bg-brand/5 transition-all text-right max-w-[45%] group"
               >
                 <span className="text-[10px] uppercase font-bold text-muted-foreground">Next Lesson</span>
-                <span className="text-sm font-semibold text-white truncate max-w-[200px]">{flatLessonsListForNav[currentIdx + 1].title.replace(/^\d+\.\d+\s+/, "")}</span>
+                <span className="text-sm font-semibold text-white group-hover:text-brand-light transition-colors truncate max-w-[200px]">{flatLessonsListForNav[currentIdx + 1].title.replace(/^\d+\.\d+\s+/, "")}</span>
               </button>
             ) : <div />}
           </div>

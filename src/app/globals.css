@@ -18,6 +18,9 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
+  
+  --color-brand: #00AA3A;
+  --color-brand-light: #89E903;
 }
 
 :root {
@@ -97,3 +100,15 @@
 .animate-fade-rise { animation: fade-rise 0.8s ease-out both; }
 .animate-fade-rise-delay { animation: fade-rise 0.8s ease-out 0.2s both; }
 .animate-fade-rise-delay-2 { animation: fade-rise 0.8s ease-out 0.4s both; }
+
+@utility text-brand-gradient {
+  background: linear-gradient(135deg, #00AA3A 0%, #89E903 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@utility bg-brand-gradient {
+  background: linear-gradient(135deg, #00AA3A 0%, #89E903 100%);
+}

@@ -53,8 +53,8 @@ export default function ProjectsPage() {
         {projects.map((project) => (
           <div key={project.id} className="liquid-glass rounded-3xl p-8 flex flex-col hover:bg-white/[0.03] transition-all hover:-translate-y-1">
             <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-foreground" />
+              <div className="w-12 h-12 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center">
+                <Code2 className="w-6 h-6 text-brand-light" />
               </div>
               <div className="flex items-center gap-3 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5" /> {project.stars}</span>
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
                 href={project.repoLink} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex-1 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-foreground text-sm font-medium transition-colors text-center flex items-center justify-center gap-2"
+                className="flex-1 py-3 rounded-xl bg-brand/10 border border-brand/30 hover:bg-brand/20 hover:border-brand-light/50 hover:text-brand-light text-foreground text-sm font-medium transition-colors text-center flex items-center justify-center gap-2"
               >
                 Contribute <Code2 className="w-4 h-4" />
               </a>
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
                 href={project.liveLink} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-12 h-[44px] rounded-xl border border-white/10 hover:bg-white/5 flex items-center justify-center transition-colors text-muted-foreground hover:text-foreground"
+                className="w-12 h-[44px] rounded-xl border border-white/10 hover:border-brand-light/30 hover:text-brand-light flex items-center justify-center transition-colors text-muted-foreground"
                 title="View Live Demo"
               >
                 <ExternalLink className="w-4 h-4" />

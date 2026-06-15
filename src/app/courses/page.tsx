@@ -4,10 +4,10 @@ import { coursesData } from '@/lib/coursesData';
 
 function getCourseIcon(id: number) {
   switch (id) {
-    case 1: return <Code className="w-6 h-6 text-foreground" />;
-    case 2: return <BookOpen className="w-6 h-6 text-foreground" />;
-    case 3: return <PlayCircle className="w-6 h-6 text-foreground" />;
-    default: return <Database className="w-6 h-6 text-foreground" />;
+    case 1: return <Code className="w-6 h-6 text-brand-light" />;
+    case 2: return <BookOpen className="w-6 h-6 text-brand-light" />;
+    case 3: return <PlayCircle className="w-6 h-6 text-brand-light" />;
+    default: return <Database className="w-6 h-6 text-brand-light" />;
   }
 }
 
@@ -29,7 +29,7 @@ export default function CoursesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full animate-fade-rise-delay">
         {coursesData.map((course) => (
           <div key={course.id} className="liquid-glass rounded-3xl p-8 flex flex-col hover:bg-white/[0.03] transition-all hover:-translate-y-1">
-            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-6">
               {getCourseIcon(course.id)}
             </div>
             
@@ -53,7 +53,7 @@ export default function CoursesPage() {
             
             <Link 
               href={`/courses/${course.id}`}
-              className="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 text-foreground text-sm font-medium transition-colors text-center block"
+              className="w-full py-3 rounded-full bg-brand/10 border border-brand/30 hover:bg-brand/20 hover:border-brand-light/50 hover:text-brand-light text-foreground text-sm font-medium transition-colors text-center block"
             >
               Start Learning
             </Link>

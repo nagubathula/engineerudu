@@ -17,7 +17,7 @@ export default function Home() {
           style={{ fontFamily: "var(--font-display), 'Instrument Serif', serif" }}
         >
           Bridging the gap between <br className="hidden sm:block" />
-          <em className="not-italic text-muted-foreground">academia and industry.</em>
+          <em className="not-italic text-brand-gradient font-bold">academia and industry.</em>
         </h1>
         
         <p className="text-muted-foreground text-base sm:text-xl max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay-2">
@@ -26,8 +26,8 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-12 animate-fade-rise-delay-2">
-          <Link href="/courses" className="liquid-glass rounded-full px-10 py-4 text-base text-foreground hover:scale-[1.03] transition-transform flex items-center gap-2">
-            Start Learning <ArrowRight className="w-4 h-4" />
+          <Link href="/courses" className="liquid-glass rounded-full px-10 py-4 text-base text-foreground hover:scale-[1.03] transition-transform flex items-center gap-2 border border-brand/30 hover:border-brand-light/50 shadow-lg shadow-brand/5">
+            Start Learning <ArrowRight className="w-4 h-4 text-brand-light" />
           </Link>
           <Link href="/projects" className="rounded-full px-10 py-4 text-base text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all">
             Explore Projects
@@ -40,9 +40,9 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Courses Card */}
-          <div className="liquid-glass rounded-3xl p-10 flex flex-col items-start text-left hover:bg-white/[0.02] transition-colors">
-            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
-              <BookOpen className="w-6 h-6 text-foreground" />
+          <div className="liquid-glass rounded-3xl p-10 flex flex-col items-start text-left hover:bg-white/[0.02] transition-colors group">
+            <div className="w-12 h-12 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-brand/20">
+              <BookOpen className="w-6 h-6 text-brand" />
             </div>
             <h2 className="text-3xl mb-4" style={{ fontFamily: "var(--font-display), 'Instrument Serif', serif" }}>
               Free Courses
@@ -50,15 +50,15 @@ export default function Home() {
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Access high-quality, industry-relevant courses in Telugu and English. Learn full-stack development, cloud architecture, and more without any cost.
             </p>
-            <Link href="/courses" className="mt-auto text-sm font-medium uppercase tracking-wider hover:text-primary/80 transition-colors flex items-center gap-2">
-              View all courses <ArrowRight className="w-4 h-4" />
+            <Link href="/courses" className="mt-auto text-sm font-medium uppercase tracking-wider hover:text-brand transition-colors flex items-center gap-2">
+              View all courses <ArrowRight className="w-4 h-4 text-brand-light" />
             </Link>
           </div>
 
           {/* Projects Card */}
-          <div className="liquid-glass rounded-3xl p-10 flex flex-col items-start text-left hover:bg-white/[0.02] transition-colors">
-            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
-              <Code className="w-6 h-6 text-foreground" />
+          <div className="liquid-glass rounded-3xl p-10 flex flex-col items-start text-left hover:bg-white/[0.02] transition-colors group">
+            <div className="w-12 h-12 rounded-2xl bg-brand-light/10 border border-brand-light/25 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-brand-light/20">
+              <Code className="w-6 h-6 text-brand-light" />
             </div>
             <h2 className="text-3xl mb-4" style={{ fontFamily: "var(--font-display), 'Instrument Serif', serif" }}>
               Open Source
@@ -66,8 +66,8 @@ export default function Home() {
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Get hands-on experience by contributing to real-world open source projects. Build your portfolio while learning best practices.
             </p>
-            <Link href="/projects" className="mt-auto text-sm font-medium uppercase tracking-wider hover:text-primary/80 transition-colors flex items-center gap-2">
-              Start contributing <ArrowRight className="w-4 h-4" />
+            <Link href="/projects" className="mt-auto text-sm font-medium uppercase tracking-wider hover:text-brand-light transition-colors flex items-center gap-2">
+              Start contributing <ArrowRight className="w-4 h-4 text-brand" />
             </Link>
           </div>
 

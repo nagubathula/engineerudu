@@ -43,4 +43,4 @@ Here is a quick comparison of Relational (SQL) and Non-Relational (NoSQL) databa
 
 ## Next Steps
 
-Now, click the **Coding Challenge** tab on the right to write your first SELECT query!
+In the next lesson, we will write our first SELECT query!
