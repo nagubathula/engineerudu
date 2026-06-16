@@ -11,7 +11,7 @@ export interface Lesson {
   id: string;
   title: string;
   duration: string;
-  videoUrl: string; // YouTube Video ID (e.g. "dQw4w9WgXcQ")
+  videoUrl?: string; // YouTube Video ID (e.g. "dQw4w9WgXcQ")
   overview: string; // Markdown descriptions of the lesson
   overviewUrl?: string; // Optional path to dynamic markdown overview file
   resources: { name: string; url: string }[];
@@ -289,117 +289,18 @@ export const coursesData: Course[] = [
     modules: [
       {
         id: "sql-m1",
-        title: "Module 1: Relational Database Basics",
+        title: "30 Days of SQL Masterclass",
         lessons: [
           {
             id: "sql-m1-l1",
-            title: "1.1 What are Relational Databases?",
-            duration: "40 mins",
-            videoUrl: "7S_tz1z_5bA", // Relational databases concept video
-            overview: "### What is a Relational Database (RDBMS)?\n\n*   A database is a structured collection of data.\n*   In a **Relational Database**, data is stored in **Tables** (also called Relations) consisting of columns and rows.\n*   Tables relate to each other using **Keys**:\n    *   **Primary Key**: A unique identifier for every record in a table.\n    *   **Foreign Key**: A column in one table that links to the primary key of another table to establish relationships.\n\n### Relational Schema Example\n\n```text\nCUSTOMERS TABLE\n+----+-----------+-------------------+----------+\n| ID | Name      | Email             | Country  |\n+----+-----------+-------------------+----------+\n| 1  | Satya     | satya@test.com    | India    |\n| 2  | John      | john@test.com     | USA      |\n+----+-----------+-------------------+----------+\n```\n\n### SQL vs NoSQL Databases\n\n*   **SQL (Relational)**: Uses tables, structured schemas, SQL language, supports ACID transactions (e.g., PostgreSQL, MySQL, SQLite).\n*   **NoSQL (Non-Relational)**: Dynamic schemas, stores data in documents, key-values, or graphs (e.g., MongoDB, Redis).",
-            overviewUrl: "/courses/sql/introduction.md",
+            title: "Full 30-Day Course Content",
+            duration: "30 Days",
+            overview: "Welcome to the complete 30-day SQL masterclass in Tenglish. This massive single lesson covers everything from basic databases to advanced optimization. Scroll through the contents on the right to navigate your daily learning journey.",
+            overviewUrl: "/courses/sql/30_days_sql_tenglish.md",
             resources: [
-              { name: "Introduction to RDBMS Concepts", url: "https://www.w3schools.com/sql/sql_intro.asp" },
-              { name: "Interactive SQL Tutorials on SQLBolt", url: "https://sqlbolt.com/" }
-            ],
-            challenge: {
-              title: "Basic SELECT Query",
-              instructions: "Retrieve all records and columns from the `customers` table to verify database connection.",
-              initialCode: "-- Write your SQL query here\n",
-              solutionCode: "SELECT * FROM customers;",
-              language: "sql",
-              testCode: `
-                const query = sql.trim().toLowerCase().replace(/\\s+/g, ' ').replace(/;$/, '');
-                if (query !== 'select * from customers') {
-                  throw new Error('Query must retrieve all columns from customers table: SELECT * FROM customers');
-                }
-                return true;
-              `
-            }
-          },
-          {
-            id: "sql-m1-l2",
-            title: "1.2 Basic SQL Syntax & SELECT Statements",
-            duration: "45 mins",
-            videoUrl: "HXV3zeQKqGY",
-            overview: "### The SELECT Statement structure:\n\n*   Use `SELECT` to specify the columns you want to retrieve.\n*   Use `FROM` to specify the table.\n*   Use `WHERE` to filter rows according to specific criteria.\n\n### Syntax Blueprint\n\n```sql\nSELECT column1, column2 \nFROM table_name\nWHERE condition;\n```\n\n### Logical Operators\n\n*   `AND`: Both conditions must be true.\n*   `OR`: At least one condition must be true.\n*   `NOT`: Negates a condition.\n*   `LIKE`: Performs pattern matching (e.g., `%gmail.com` matching emails).",
-            resources: [
-              { name: "SQL SELECT Syntax Reference", url: "https://developer.mozilla.org/en-US/docs/Glossary/SQL" }
-            ],
-            challenge: {
-              title: "Filtering Customers with WHERE",
-              instructions: "Write an SQL query to retrieve all columns for customers whose `country` is exactly `'India'`. (Use single quotes for string literals).",
-              initialCode: "-- Filter customers where country is India\n",
-              solutionCode: "SELECT * FROM customers WHERE country = 'India';",
-              language: "sql",
-              testCode: `
-                const query = sql.trim().toLowerCase().replace(/\\s+/g, ' ').replace(/;$/, '').replace(/'/g, '"');
-                if (query !== 'select * from customers where country = "india"') {
-                  throw new Error('Query must select all columns where country = "India"');
-                }
-                return true;
-              `
-            }
-          }
-        ]
-      },
-      {
-        id: "sql-m2",
-        title: "Module 2: Aggregations & Grouping Results",
-        lessons: [
-          {
-            id: "sql-m2-l1",
-            title: "2.1 SQL Aggregate Queries",
-            duration: "50 mins",
-            videoUrl: "m4s9S8-nK9A",
-            overview: "### SQL Aggregation Functions:\n\n*   `COUNT()`: Returns the number of rows matching the query.\n*   `SUM()`: Returns the total sum of a numeric column.\n*   `AVG()`: Returns the average value of a numeric column.\n*   `MIN()`: Returns the minimum value.\n*   `MAX()`: Returns the maximum value.\n\n### Examples\n\n```sql\nSELECT COUNT(*) FROM orders;\nSELECT AVG(price) FROM products;\n```",
-            resources: [
-              { name: "W3Schools SQL Aggregate Functions", url: "https://www.w3schools.com/sql/sql_count_sum_avg.asp" }
-            ],
-            challenge: {
-              title: "Counting Table Records",
-              instructions: "Write an SQL query to count the total number of records in the `orders` table.",
-              initialCode: "-- Count total orders\n",
-              solutionCode: "SELECT COUNT(*) FROM orders;",
-              language: "sql",
-              testCode: `
-                const query = sql.trim().toLowerCase().replace(/\\s+/g, ' ').replace(/;$/, '');
-                if (query !== 'select count(*) from orders' && query !== 'select count(id) from orders') {
-                  throw new Error('Query must count all records from orders table. Try: SELECT COUNT(*) FROM orders');
-                }
-                return true;
-              `
-            }
-          },
-          {
-            id: "sql-m2-l2",
-            title: "2.2 Grouping with GROUP BY & HAVING",
-            duration: "55 mins",
-            videoUrl: "gpC1Gr0okwA",
-            overview: "### Summarizing Data with Grouping:\n\n*   `GROUP BY`: Collapses records with matching values in specified columns into summary rows.\n*   `HAVING`: Filter groups created by `GROUP BY` (like `WHERE`, but works on aggregates).\n\n### Execution Order\n\n1.  `FROM` table selection\n2.  `WHERE` row filters\n3.  `GROUP BY` group rows\n4.  `HAVING` group filters\n5.  `SELECT` column output\n6.  `ORDER BY` sort results",
-            resources: [
-              { name: "SQL GROUP BY & HAVING guide", url: "https://sqlbolt.com/lesson/select_queries_with_aggregates" }
-            ],
-            challenge: {
-              title: "Group By and Average Salary",
-              instructions: "Retrieve the average `salary` of employees grouped by their `department`. Choose column name `AVG(salary)` (or just select it) and table `employees`.",
-              initialCode: "-- Average salary grouped by department\n",
-              solutionCode: "SELECT department, AVG(salary) FROM employees GROUP BY department;",
-              language: "sql",
-              testCode: `
-                const query = sql.trim().toLowerCase().replace(/\\s+/g, ' ').replace(/;$/, '');
-                if (!query.includes('group by department')) {
-                  throw new Error('Query must include GROUP BY department');
-                }
-                if (!query.includes('avg(salary)')) {
-                  throw new Error('Query must calculate average salary using AVG(salary)');
-                }
-                if (!query.includes('employees')) {
-                  throw new Error('Query must select from employees table');
-                }
-                return true;
-              `
-            }
+              { name: "DB Fiddle (Practice environment)", url: "https://www.db-fiddle.com" },
+              { name: "SQLBolt Interactive", url: "https://sqlbolt.com/" }
+            ]
           }
         ]
       }
