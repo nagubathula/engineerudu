@@ -107,8 +107,12 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
     const headings: { id: string, title: string, level: number }[] = [];
     lessonOverview.split("\n\n").forEach((para, i) => {
       const cleanPara = para.trim();
-      if (cleanPara.startsWith("# ")) {
-        const firstLine = cleanPara.split("\n")[0];
+      const firstLine = cleanPara.split("\n")[0];
+      if (cleanPara.startsWith("### ")) {
+        headings.push({ id: `heading-${i}`, title: firstLine.replace("### ", ""), level: 3 });
+      } else if (cleanPara.startsWith("## ")) {
+        headings.push({ id: `heading-${i}`, title: firstLine.replace("## ", ""), level: 2 });
+      } else if (cleanPara.startsWith("# ")) {
         headings.push({ id: `heading-${i}`, title: firstLine.replace("# ", ""), level: 1 });
       }
     });
@@ -275,7 +279,9 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
             <div className="flex flex-col gap-1.5">
               {tocHeadings.map((heading) => (
                 <div key={heading.id} className="flex flex-col gap-1">
-                  <div className="flex items-center justify-between px-3 py-2.5 rounded-2xl transition-all duration-300 hover:bg-white/[0.04] border border-transparent">
+                  <div className={`flex items-center justify-between py-2 rounded-2xl transition-all duration-300 hover:bg-black/5 border border-transparent ${
+                    heading.level === 1 ? 'px-3 mt-1' : heading.level === 2 ? 'px-3 ml-4' : 'px-3 ml-8'
+                  }`}>
                     <button
                       onClick={() => {
                         const el = document.getElementById(heading.id);
@@ -286,10 +292,12 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                       className="flex items-start gap-3 text-left flex-grow"
                     >
                       <div className="mt-0.5 opacity-50">
-                        <FileText className="w-4 h-4 text-brand-light" />
+                        <FileText className={`text-brand-light ${heading.level === 1 ? 'w-4 h-4' : 'w-3 h-3 mt-0.5'}`} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[13px] leading-tight transition-colors text-zinc-700 hover:text-zinc-900 font-bold">
+                        <span className={`leading-tight transition-colors text-zinc-700 hover:text-zinc-900 ${
+                          heading.level === 1 ? 'text-[13px] font-bold' : 'text-xs font-medium'
+                        }`}>
                           {heading.title}
                         </span>
                       </div>
