@@ -146,14 +146,14 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
     let parts = text.split(/(\*\*.*?\*\*|`.*?`|\[.*?\]\(.*?\))/g);
     return parts.map((part, index) => {
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={index} className="font-bold text-neutral-900 dark:text-zinc-900 sepia-text-bold">{part.slice(2, -2)}</strong>;
+        return <strong key={index} className="font-bold text-zinc-900 dark:text-zinc-100 sepia-text-bold">{part.slice(2, -2)}</strong>;
       }
       if (part.startsWith("`") && part.endsWith("`")) {
         return (
           <code 
             key={index} 
-            className="bg-black/5 dark:bg-zinc-200 px-1.5 py-0.5 rounded font-mono text-[0.9em] border border-black/10 dark:border-zinc-300"
-            style={{ color: readTheme === "sepia" ? "#4f3824" : undefined }}
+            className="bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-md font-mono text-[0.85em] font-medium border border-zinc-200 dark:border-zinc-700 text-brand-light"
+            style={{ color: readTheme === "sepia" ? "#4f3824" : "var(--color-brand)" }}
           >
             {part.slice(1, -1)}
           </code>
@@ -204,15 +204,15 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
 
   // Theme styling definitions
   const themeClasses = {
-    light: "bg-zinc-50 border-zinc-200 text-zinc-850 shadow-md",
-    sepia: "bg-[#fbf4e6] border-[#eadfcc] text-[#5c4a3b] shadow-md",
-    dark: "bg-zinc-950/70 border-zinc-300 text-zinc-200 shadow-md backdrop-blur-md"
+    light: "bg-white border-zinc-200 text-zinc-900 shadow-sm",
+    sepia: "bg-[#fbf4e6] border-[#eadfcc] text-[#5c4a3b] shadow-sm",
+    dark: "bg-zinc-950/70 border-zinc-300 text-zinc-200 shadow-sm backdrop-blur-md"
   };
 
   const textClasses = {
     sm: "text-sm leading-relaxed",
     base: "text-base leading-relaxed lg:text-[17px]",
-    lg: "text-lg leading-loose"
+    lg: "text-lg leading-[1.8]"
   };
 
   return (
@@ -422,8 +422,8 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                     <ul key={i} className="list-none flex flex-col gap-3 my-4">
                       {para.split("\n").map((li, j) => (
                         <li key={j} className="flex items-start gap-3">
-                          <span className="text-brand mt-1.5 flex-shrink-0"><div className="w-1.5 h-1.5 rounded-full bg-brand" /></span>
-                          <span className="text-current/90">{renderFormattedText(li.replace("* ", ""))}</span>
+                          <span className="text-brand mt-1.5 flex-shrink-0"><div className="w-2 h-2 rounded-full bg-brand" /></span>
+                          <span className="text-current opacity-90">{renderFormattedText(li.replace("* ", ""))}</span>
                         </li>
                       ))}
                     </ul>
@@ -431,7 +431,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                 }
                 if (cleanPara.match(/^\d+\.\s+/)) {
                   return (
-                    <ol key={i} className="list-decimal pl-6 flex flex-col gap-3 my-4 text-current/90 marker:text-brand marker:font-bold">
+                    <ol key={i} className="list-decimal pl-6 flex flex-col gap-3 my-4 text-current opacity-90 marker:text-brand marker:font-bold">
                       {para.split("\n").map((li, j) => (
                         <li key={j} className="pl-2">{renderFormattedText(li.replace(/^\d+\.\s+/, ""))}</li>
                       ))}
@@ -441,7 +441,7 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                 if (para.startsWith("```")) {
                   const lines = para.split("\n").filter(l => !l.startsWith("```"));
                   return (
-                    <pre key={i} className="bg-[#0d1117] border border-zinc-300 rounded-2xl p-5 md:p-6 font-mono text-[13px] md:text-sm text-gray-300 overflow-x-auto my-8 shadow-xl leading-relaxed select-all relative group">
+                    <pre key={i} className="bg-[#0d1117] border border-zinc-800 rounded-2xl p-5 md:p-6 font-mono text-[13px] md:text-sm text-gray-300 overflow-x-auto my-8 shadow-md leading-relaxed select-all relative group">
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand to-transparent opacity-50" />
                       <code>{lines.join("\n")}</code>
                     </pre>
@@ -449,12 +449,12 @@ export default function CoursePlayerPage({ params }: { params: Promise<{ id: str
                 }
                 if (cleanPara.startsWith(">")) {
                   return (
-                    <blockquote key={i} className="border-l-4 border-brand bg-brand/5 p-5 rounded-r-2xl my-6 text-current/90 font-medium italic">
+                    <blockquote key={i} className="border-l-4 border-brand bg-brand/5 p-6 rounded-r-2xl my-8 text-current font-medium italic">
                       {renderFormattedText(cleanPara.replace(/^>\s*/gm, ""))}
                     </blockquote>
                   );
                 }
-                return <p key={i} className="my-4 text-current/90 leading-relaxed tracking-wide">{renderFormattedText(cleanPara)}</p>;
+                return <p key={i} className="my-5 text-current opacity-95 leading-[1.8] tracking-wide">{renderFormattedText(cleanPara)}</p>;
               })}
             </div>
 

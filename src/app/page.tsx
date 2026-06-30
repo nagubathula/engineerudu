@@ -6,8 +6,9 @@ export default function Home() {
     <main className="w-full relative overflow-hidden flex flex-col items-center min-h-screen">
       
       {/* Dynamic Background Orbs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand/20 blur-[120px] rounded-[100%] pointer-events-none -z-10" />
-      <div className="absolute top-60 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand/30 blur-[100px] rounded-[100%] pointer-events-none -z-10" />
+      <div className="absolute top-60 right-0 w-[500px] h-[500px] bg-blue-500/15 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand/10 blur-[150px] rounded-full pointer-events-none -z-10" />
       
       <div className="w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
         

@@ -62,19 +62,8 @@ export default function RootLayout({
           }}
         />
 
-        {/* Global Video Background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="fixed inset-0 w-full h-full object-cover z-0 opacity-40 pointer-events-none"
-        >
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Light overlay to make content readable */}
-        <div className="fixed inset-0 bg-white/90 z-0 pointer-events-none"></div>
+        {/* Clean Global Background */}
+        <div className="fixed inset-0 bg-zinc-50 z-0 pointer-events-none"></div>
 
         <Navigation />
         <div className="relative z-10 flex-grow pt-24 pb-12">
